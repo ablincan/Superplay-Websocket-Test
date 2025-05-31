@@ -1,0 +1,8 @@
+<div class="container">
+    <select [(ngModel)]="resourceTypeId">
+        <option [ngValue]="null" disabled>Select the resource</option>
+        <option *ngFor="let stat of stats" [value]="stat.ResourceTypeId">{{ stat.ResourceName }}</option>
+    </select>
+    <input type="number" [(ngModel)]="delta" placeholder="Delta" />
+    <p-button (click)="sendMessage()" label="Send" />
+</div>

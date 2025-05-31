@@ -1,0 +1,9 @@
+<div class="container">
+    <input type="text" [(ngModel)]="friendPlayerId" placeholder="Friend Player Id" />
+    <select [(ngModel)]="resourceTypeId">
+        <option [ngValue]="null" disabled>Select the resource</option>
+        <option *ngFor="let stat of stats" [value]="stat.ResourceTypeId">{{ stat.ResourceName }}</option>
+    </select>
+    <input type="number" [(ngModel)]="resourceValue" placeholder="Amount" />
+    <p-button (click)="sendMessage()" label="Send" />
+</div>  

@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy .csproj files first for faster cache
+COPY Game.Server/Game.Server.csproj Game.Server/
+COPY Game.Core/Game.Core.csproj Game.Core/
+COPY Game.Infrastructure/Game.Infrastructure.csproj Game.Infrastructure/
+
+# Copy everything else from solution root
+COPY .. .
+
+# Restore and build
+RUN dotnet restore Game.Server/Game.Server.csproj
+RUN dotnet publish Game.Server/Game.Server.csproj -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "Game.Server.dll"]

@@ -1,0 +1,44 @@
+/* Center the card in the viewport */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Simple card styling */
+.login-card {
+  width: 320px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  text-align: center;
+  background: #fff;
+}
+
+.login-card h2 {
+  margin-bottom: 1.5rem;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.login-card button:hover {
+  background-color: #1565c0;
+}

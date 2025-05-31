@@ -1,0 +1,35 @@
+<div class="dashboard">
+
+  <p-card header="Profile" *ngIf="loginResponse$">
+    <div class="field"><strong>Player ID:</strong> {{ loginResponse$.PlayerId }}</div>
+    <div class="field"><strong>Resources:</strong></div>
+    <ul>
+      <li *ngFor="let stat of loginResponse$.Stats">
+        {{ stat.ResourceName }}: {{ stat.Total }}
+      </li>
+    </ul>
+  </p-card>
+
+  <br />
+
+  <p-card header="Actions">
+    <p-tabs value="0" (valueChange)="onTabChange()">
+      <p-tablist>
+          <p-tab value="update-resources">Update Resource Request</p-tab>
+          <p-tab value="send-gift">Send Gift Request</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+          <p-tabpanel value="update-resources">
+              <app-update-resource [stats]="loginResponse$.Stats" />
+          </p-tabpanel>
+
+          <p-tabpanel value="send-gift">
+            <app-send-gift [stats]="loginResponse$.Stats" />
+          </p-tabpanel>
+      </p-tabpanels>
+  </p-tabs>
+
+  <p>{{ message }}</p>
+  </p-card>
+
+</div>
