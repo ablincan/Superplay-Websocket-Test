@@ -3,6 +3,18 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# === Angular ===
+/client/node_modules/
+/client/dist/
+/client/.angular/
+/client/.env
+/client/.env.local
+
 # User-specific files
 *.rsuser
 *.suo
